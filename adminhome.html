@@ -1,0 +1,21 @@
+{% extends 'header.html'%}
+
+
+{%block content%}
+
+
+
+
+<div class="adminhome">
+
+
+    <form action="adminhome" method="POST">
+        {%csrf_token%}
+        <input type="submit" name="search" value="Analyse Search">
+        <input type="submit" name="manage_users" value="Manage User">
+
+    </form>
+</div>
+
+
+{%endblock%}

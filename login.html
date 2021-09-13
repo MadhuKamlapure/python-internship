@@ -1,0 +1,43 @@
+{% extends 'header.html'%}
+
+{%block content%}
+
+
+<div class="login">
+
+    <div class="inlogin" style="height: 330px;">
+
+        <h1>Welcome to Login</h1>
+
+        <form action="login" method="POST">
+            {% csrf_token %}
+        <input type="email" name="email" placeholder="Enter Your Email" required="">
+        <br>
+        <input type="password" name="pass" placeholder="Enter Your Password" required="">
+        <br>
+        <select name="role">
+            <option>Select Your Role</option>
+            <option>User</option>
+            <option>Admin</option>
+        </select>
+        <br>
+        <input type="submit" value="Login">
+        <br>
+    </form>
+    <a href="resetpass">Forgot Password</a>
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <center>
+      <h3 style="color:red;">  {{ message | safe }}<h3>
+      </center>
+    </div>
+    {% endfor %}
+    </div>
+
+</div>
+
+
+{%endblock%}

@@ -1,0 +1,76 @@
+{% extends 'header.html' %}
+{% block content %}
+<style>
+    
+    td
+    {
+        text-align: center;
+        color: black;
+    }
+    .ab
+    {
+        padding-left: 20px;
+        height: 500px;
+    }
+    
+    .ab input[type="submit"]
+    {
+        padding : 5px;
+        width : 100px;
+        margin-bottom: 20px;
+        background-color: blueviolet;
+        color: white;
+        cursor: pointer;
+            
+        
+    }
+    </style>
+    <div class="ab">
+    <center>
+        <h1>Your Searched History</h1>
+    <table border="1">
+        <tr>
+            <th>Sr.No</th>
+            
+          
+            
+            <th>App Data</th> 
+            <th>Date</th>
+        </tr>
+       
+    
+    {% for i in data%}
+
+    <tr>
+        <td>{{ forloop.counter }}</td>
+   
+        <td>{{i.data}}</td>
+        
+        
+        <td>{{i.dt}}</td>
+     
+        
+
+        
+        <!-- <td>
+         
+            <form action="delete" method='POST'>
+                {%csrf_token%}
+                <input type="hidden" value={{i.id}} name="idz1">
+           
+            <input type="submit" value="Delete" name="delete">
+            </form> 
+        </td>
+        -->
+        
+    </tr>
+
+    {% endfor %}
+    
+        
+
+    </table>
+    </center>
+    </div>
+    
+{% endblock %}

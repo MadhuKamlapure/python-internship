@@ -1,0 +1,65 @@
+{% extends 'header.html'%}
+
+
+{%block content%}
+
+
+<style>
+    td,th
+    {
+        padding: 5px;
+    }
+</style>
+
+<div class="result">
+    <h1>All Fetched Result</h1>
+
+    <table border="1">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+               Reviews
+            </th>
+            <th>
+                Polarity
+            </th>
+           
+            <th>
+                Status
+            </th>
+           
+        </tr>
+      
+    {% for i,j in data.items %}
+
+    <tr>
+        <td>{{ forloop.counter }}</td>
+      
+        
+       
+        <td>{{j}}</td>
+        <td>{{i}}</td>
+      
+        <td>
+            {% if i > 0.00  %}
+            <span style="color: green;">Postitive</span>
+            {% elif i < 0 %}
+            <span style="color:red;" >Negative</span>
+            {% else%}
+            <span style="color: blue;">Nuetral</span>
+            {% endif %}
+        </td>
+    
+        
+      
+        
+    </tr>
+
+    {% endfor %}
+    </table>
+</div>
+
+
+{%endblock%}

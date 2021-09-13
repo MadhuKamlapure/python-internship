@@ -1,0 +1,48 @@
+{% extends 'header.html'%}
+
+
+{%block content%}
+
+
+<div class="login" style="height: 500px;">
+
+    <div class="inlogin" style="height: 430px;">
+
+        <h1>Welcome to Search Section</h1>
+       
+        {% if request.session.user is not None %}
+        <h3 style="color: red;">You can Search Max 5 Times</h3>
+        {%endif%}
+        <form action="admin" method="POST">
+            {% csrf_token %}
+            <label>Enter Your APP'S Name Seperated by Comma(',')</label><br>
+            <br>
+    
+        <textarea placeholder="Enter Your App Names" rows="4" cols="29" name="appdata" required=""></textarea>
+        <br>
+     
+       
+        <input type="submit" value="Seach">
+        <br>
+        
+    {% if request.session.user is not None %}
+    <h3 style="color: red;">Your Search Count is {{data}}</h3>
+    {%endif%}
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <center>
+      <h3 style="color:red;">  {{ message | safe }}<h3>
+      </center>
+    </div>
+    {% endfor %}
+    </form>
+
+    </div>
+
+</div>
+
+
+{%endblock%}
